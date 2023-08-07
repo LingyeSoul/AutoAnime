@@ -46,6 +46,7 @@ def Aria2(path,durl):
     try:
         return json.loads(requests.post(f'{url}/fs/add_aria2', data=json.dumps(data), headers=dict(headers, **ct_json)).text)
     except Exception as e:
+	    log("Sent Task Error!")
         return {'code': -1, 'message': e}
 
 Authorization=getToken('admin','I7KsovEB')
@@ -53,9 +54,7 @@ headers = {
     'UserAgent': UserAgent,
     'Authorization': str(Authorization)[55:-3]
 }
-f = open("token.txt", "w")
-f.write(str(Authorization)[55:-3])
-f.close()
+
 
 #print(Aria2("/OD E5 (Anime)/新番订阅",'https://mikanime.tv/Download/20230713/f3f2c3f0e545ed7f20ab487db34dda9a5d8f4302.torrent'))
 
