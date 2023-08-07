@@ -36,30 +36,6 @@ def getToken(username, password):
         log('Login AList Error!')
         return {'code': -1, 'message': e}
 
-# 新建文件夹
-def MakeDir(path):
-    data = { 'path': path }
-    log('MakeDir: '+path)
-    try:
-        return json.loads(requests.post(f'{url}/fs/mkdir', data=json.dumps(data), headers=dict(headers, **ct_json)).text)
-    except Exception as e:
-        log('MakeDir Error!')
-        return {'code': -1, 'message': e}
-        
-# 上传文件
-def Upload(localPath, remotePath, fileName, password = ''):
-    upload_header = {
-        'UserAgent': UserAgent,
-        'Authorization': Authorization,
-        'File-Path': parse.quote(f'{remotePath}/{fileName}'),
-        'Password': password,
-        'Content-Length': f'{os.path.getsize(localPath)}'
-    }
-    try:
-        return json.loads(requests.put(f'{url}/fs/put', headers=upload_header, data=open(localPath, 'rb').read()).text)
-    except Exception as e:
-        return {'code': -1, 'message': e}
-        
 
 def Aria2(path,durl):
     data = { 
