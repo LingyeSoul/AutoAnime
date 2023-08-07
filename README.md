@@ -2,6 +2,7 @@
 + AutoAnime is a Python script for subscribing to Rss and pushing Alist offline downloads (Aria2 only)
 + AutoAnime是一个用于订阅Rss并推送Alist离线下载(仅支持Aria2)的Python脚本
 + AutoAnime仅支持磁力链接!!!
++ 使用了来自[Alist-SDK](https://github.com/lym12321/Alist-SDK) 的API
 # Setup
 1. 确认已安装Python3，并且使用pip3安装了feedparser,requests,json库
    Confirm that Python 3 is installed and that the feedparser, requests, and JSON libraries are installed using pip3
