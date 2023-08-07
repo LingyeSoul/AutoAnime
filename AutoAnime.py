@@ -37,7 +37,6 @@ def getToken(username, password):
         return {'code': -1, 'message': e}
 
 
-
 def Aria2(path,durl):
     data = { 
     'path': path,
@@ -47,7 +46,7 @@ def Aria2(path,durl):
     try:
         return json.loads(requests.post(f'{url}/fs/add_aria2', data=json.dumps(data), headers=dict(headers, **ct_json)).text)
     except Exception as e:
-	    log("Sent Task Error!")
+        log('Login AList Error!')
         return {'code': -1, 'message': e}
 
 Authorization=getToken('admin','I7KsovEB')
