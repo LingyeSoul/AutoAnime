@@ -55,14 +55,16 @@ def Upload(localPath, remotePath, fileName, password = ''):
 def Aria2(path,durl):
     data = { 
     'path': path,
-    'urls':[durl]
+    'urls':[durl],
+    "tool": "aria2",
+    "delete_policy": "delete_on_upload_succeed"
       }
     log('AList to Aria, path:'+path+', url:'+durl)
     try:
-        return json.loads(requests.post(f'{url}/fs/add_aria2', data=json.dumps(data), headers=dict(headers, **ct_json)).text)
+        return json.loads(requests.post(f'{url}/fs/add_offline_download', data=json.dumps(data), headers=dict(headers, **ct_json)).text)
     except Exception as e:
-        log('Sent to Alist Error!!!')
         return {'code': -1, 'message': e}
+
 
 def toaria2(title,index,content):
 	num=len(content.entries)-int(index)
